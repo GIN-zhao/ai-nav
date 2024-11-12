@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { ToolImage } from '@/components/tool-image';
 
 interface Tool {
   id: string;
@@ -13,6 +14,7 @@ interface Tool {
   icon: string;
   category: string;
   description: string;
+  url: string;
 }
 
 const tools: Tool[] = [
@@ -22,6 +24,7 @@ const tools: Tool[] = [
     icon: '/logos/ChatGPT_logo.svg',
     category: 'AI Chat',
     description: "The world's most famous conversational assistant. Ask questions and get precise answers",
+    url: 'https://chat.openai.com'
   },
   {
     id: '2',
@@ -29,6 +32,7 @@ const tools: Tool[] = [
     icon: '/logos/Claude_logo.ico',
     category: 'AI Chat',
     description: 'An AI assistant with growing capabilities and impressive performance',
+    url: 'https://claude.ai'
   },
   {
     id: '3',
@@ -36,14 +40,15 @@ const tools: Tool[] = [
     icon: '/logos/Gemini_logo.webp',
     category: 'AI Chat',
     description: 'A powerful AI chat assistant from Google that rivals ChatGPT in performance',
+    url: 'https://gemini.google.com'
   },
   {
     id: '4',
     name: 'Microsoft Copilot',
     icon: '/logos/MicrosoftCopilot_logo.png',
     category: 'AI Chat',
-    description:
-      'A versatile assistant to help you every day. Get customized solutions and useful information at any time',
+    description: 'A versatile assistant to help you every day. Get customized solutions and useful information at any time',
+    url: 'https://copilot.microsoft.com'
   },
   {
     id: '5',
@@ -51,6 +56,7 @@ const tools: Tool[] = [
     icon: '/logos/Poe_logo.png',
     category: 'AI Chat',
     description: 'An AI powered by Quora that can answer any question you have',
+    url: 'https://poe.com'
   },
   {
     id: '6',
@@ -58,6 +64,7 @@ const tools: Tool[] = [
     icon: '/logos/Midjourney_logo.png',
     category: 'AI Art',
     description: 'The most powerful AI art generation tool',
+    url: 'https://www.midjourney.com'
   },
   {
     id: '7',
@@ -65,6 +72,7 @@ const tools: Tool[] = [
     icon: '/logos/StableDiffusion_logo.png',
     category: 'AI Music',
     description: 'The most powerful AI music creation tool',
+    url: 'https://www.suno.ai'
   },
   {
     id: '8',
@@ -72,6 +80,7 @@ const tools: Tool[] = [
     icon: '/logos/cursor_logo.jpeg',
     category: 'AI Code',
     description: 'An AI-first code editor that helps you code 10x faster with AI built in at every layer',
+    url: 'https://cursor.sh'
   },
   {
     id: '9',
@@ -79,6 +88,7 @@ const tools: Tool[] = [
     icon: '/logos/copilot.png',
     category: 'AI Code',
     description: 'Your AI pair programmer that helps you write code faster and with less work',
+    url: 'https://github.com/features/copilot'
   },
   {
     id: '10',
@@ -86,14 +96,15 @@ const tools: Tool[] = [
     icon: '/logos/tongyi_logo.svg',
     category: 'AI Code',
     description: '阿里云推出的AI编程助手，提供代码补全、代码生成、代码解释等功能',
+    url: 'https://tongyi.aliyun.com'
   },
   {
     id: '11',
     name: 'DeepSeek Coder',
     icon: '/logos/deepseek_logo.jpeg',
     category: 'AI Code',
-    description:
-      'A powerful AI code assistant that helps you write better code with deep understanding of your codebase',
+    description: 'A powerful AI code assistant that helps you write better code with deep understanding of your codebase',
+    url: 'https://www.deepseek.com'
   },
 ];
 
@@ -103,6 +114,14 @@ export default function Component() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    // 预加载所有工具图标
+    tools.forEach(tool => {
+      const img = new Image();
+      img.src = tool.icon;
+    });
+  }, []);
 
   const filteredTools = tools.filter(tool => {
     const matchesCategory = selectedCategory === 'All' || tool.category === selectedCategory;
@@ -228,30 +247,28 @@ export default function Component() {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02]" />
       <div className="absolute inset-0 bg-gradient-to-t from-white/[0.05] to-transparent" />
 
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-sky-100/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-rose-100/20 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-sky-100/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-rose-100/20 rounded-full blur-3xl" />
 
       <div className={`relative min-h-screen ${themeStyles.container}`}>
-        <div className="container mx-auto px-6 py-20 relative">
-          {/* Theme Toggle */}
-          <div className="absolute right-6 top-6 z-10">
+        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-20 relative">
+          <div className="absolute right-4 sm:right-6 top-4 sm:top-6 z-10">
             <ThemeToggle theme={theme} onToggle={() => setTheme(theme === 'light' ? 'dark' : 'light')} />
           </div>
 
-          {/* Header - 更现代的标题样式 */}
-          <div className="text-center mb-20 space-y-5">
-            <h1 className={`text-7xl font-bold ${themeStyles.title}`}>
+          <div className="text-center mb-12 sm:mb-20 space-y-3 sm:space-y-5">
+            <h1 className={`text-4xl sm:text-5xl md:text-7xl font-bold ${themeStyles.title}
+                           leading-tight`}>
               AI Tools Universe
             </h1>
-            <p className={`text-xl max-w-2xl mx-auto ${themeStyles.subtitle}`}>
+            <p className={`text-lg sm:text-xl max-w-2xl mx-auto px-4 ${themeStyles.subtitle}`}>
               Discover and explore the most powerful AI tools
               <br className="hidden sm:block" />
               that are shaping our future
             </p>
           </div>
 
-          {/* Search Bar - 重新设计的搜索框 */}
-          <div className="relative mb-20 max-w-3xl mx-auto">
+          <div className="relative mb-12 sm:mb-20 max-w-3xl mx-auto px-4 sm:px-0">
             <div className={themeStyles.searchContainer}>
               <div className="relative">
                 <div className={themeStyles.searchIconWrapper}>
@@ -259,7 +276,7 @@ export default function Component() {
                 </div>
                 <Input
                   placeholder="Search by name, description or category..."
-                  className={`w-full h-14 pl-14 pr-6 rounded-2xl
+                  className={`w-full h-12 sm:h-14 pl-14 pr-6 rounded-2xl text-base sm:text-lg
                              ${themeStyles.searchBg}
                              ${themeStyles.searchText}
                              border-0
@@ -273,60 +290,63 @@ export default function Component() {
             </div>
           </div>
 
-          {/* Category Filters - 更优雅的分类过滤器 */}
-          <div className="flex flex-wrap justify-center gap-3 mb-20">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 sm:mb-20 px-4">
             {categories.map(category => (
               <Button
                 key={category}
                 variant={selectedCategory === category ? 'secondary' : 'ghost'}
-                className={`rounded-full px-6 py-2 text-sm font-medium
-                  transition-all duration-300 ease-out
-                  ${selectedCategory === category
-                    ? themeStyles.buttonActive
-                    : themeStyles.buttonInactive
-                  }`}
+                className={`rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm font-medium
+                           transition-all duration-300 ease-out
+                           ${selectedCategory === category
+                             ? themeStyles.buttonActive
+                             : themeStyles.buttonInactive
+                           }`}
                 onClick={() => setSelectedCategory(category)}>
                 {category}
               </Button>
             ))}
           </div>
 
-          {/* Tools Grid - 更精致的卡片设计 */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-0">
             {filteredTools.map(tool => (
-              <div key={tool.id} className={themeStyles.card}>
+              <a
+                key={tool.id}
+                href={tool.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block group cursor-pointer ${themeStyles.card}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(tool.url, '_blank', 'noopener,noreferrer');
+                }}
+              >
                 <div className={`absolute inset-x-0 -top-px h-px w-full bg-gradient-to-r
                               ${themeStyles.cardGlow}
                               opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                <div className="flex items-start gap-6">
-                  <div className={themeStyles.iconContainer}>
-                    <img
+                <div className="flex items-start gap-4 sm:gap-6">
+                  <div className={`${themeStyles.iconContainer} w-14 h-14 sm:w-16 sm:h-16`}>
+                    <ToolImage
                       src={tool.icon}
                       alt={`${tool.name} icon`}
-                      className="w-12 h-12 object-contain"
-                      loading="lazy"
-                      onError={e => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = '/placeholder.svg';
-                      }}
+                      className="w-10 h-10 sm:w-12 sm:h-12"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`text-xl font-semibold mb-3
+                    <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3
                                   transition-colors duration-300
                                   ${themeStyles.cardTitle}`}>
                       {tool.name}
                     </h3>
-                    <Badge variant="secondary" className={themeStyles.cardBadge}>
+                    <Badge variant="secondary" className={`${themeStyles.cardBadge} text-xs`}>
                       {tool.category}
                     </Badge>
-                    <p className={`mt-3 ${themeStyles.cardText}`}>
+                    <p className={`mt-2 sm:mt-3 text-sm ${themeStyles.cardText} line-clamp-2`}>
                       {tool.description}
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
