@@ -106,6 +106,78 @@ const tools: Tool[] = [
     description: 'A powerful AI code assistant that helps you write better code with deep understanding of your codebase',
     url: 'https://www.deepseek.com'
   },
+  {
+    id: '12',
+    name: 'Leonardo.ai',
+    icon: '/logos/leonardo_logo.png',
+    category: 'AI Art',
+    description: 'AI-powered creative studio for generating and editing professional quality images',
+    url: 'https://leonardo.ai'
+  },
+  {
+    id: '13',
+    name: 'Jasper',
+    icon: '/logos/jasper_logo.png',
+    category: 'AI Writing',
+    description: 'AI writing assistant that helps create original content for blogs, social media, and marketing',
+    url: 'https://www.jasper.ai'
+  },
+  {
+    id: '14',
+    name: 'Copy.ai',
+    icon: '/logos/copyai_logo.png',
+    category: 'AI Writing',
+    description: 'AI-powered copywriting tool that generates high-converting marketing copy',
+    url: 'https://www.copy.ai'
+  },
+  {
+    id: '15',
+    name: 'Grammarly',
+    icon: '/logos/grammarly_logo.ico',
+    category: 'AI Writing',
+    description: 'AI writing assistant that helps improve grammar, clarity, and writing style',
+    url: 'https://www.grammarly.com'
+  },
+  {
+    id: '16',
+    name: 'Runway',
+    icon: '/logos/runway_logo.png',
+    category: 'AI Video',
+    description: 'AI-powered creative suite for editing and generating videos',
+    url: 'https://runway.ml'
+  },
+  {
+    id: '17',
+    name: 'Synthesia',
+    icon: '/logos/synthesia_logo.png',
+    category: 'AI Video',
+    description: 'AI video generation platform that turns text into professional-looking videos',
+    url: 'https://www.synthesia.io'
+  },
+  {
+    id: '18',
+    name: 'Amazon CodeWhisperer',
+    icon: '/logos/codewhisperer_logo.ico',
+    category: 'AI Code',
+    description: 'AI coding companion that provides code suggestions based on comments and existing code',
+    url: 'https://aws.amazon.com/codewhisperer'
+  },
+  {
+    id: '19',
+    name: 'Tabnine',
+    icon: '/logos/tabnine_logo.ico',
+    category: 'AI Code',
+    description: 'AI code completion tool that helps developers write code faster and with fewer errors',
+    url: 'https://www.tabnine.com'
+  },
+  {
+    id: '20',
+    name: 'Replit',
+    icon: '/logos/replit_logo.png',
+    category: 'AI Code',
+    description: 'Browser-based IDE with AI pair programming features to help you code better',
+    url: 'https://replit.com'
+  }
 ];
 
 const categories = ['All', 'AI Chat', 'AI Code', 'AI Art', 'AI Writing', 'AI Music', 'AI Video'];
