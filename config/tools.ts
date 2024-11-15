@@ -53,11 +53,11 @@ export const tools: Tool[] = [
   },
   {
     id: '6',
-    name: '秘塔写作',
+    name: '秘塔写作猫',
     icon: '/placeholder.svg',
     category: 'AI写作',
     description: '专业学术写作助手，支持多种论文格式规范',
-    url: 'https://xiezuo.mita.ai',
+    url: 'https://xiezuocat.com/',
   },
 
   // AI Search
