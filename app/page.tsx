@@ -10,7 +10,7 @@ import { ToolImage } from '@/components/tool-image';
 import { Tool, tools, categories } from '@/config/tools';
 
 export default function Component() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('全部');
   const [searchQuery, setSearchQuery] = useState('');
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
@@ -146,28 +146,28 @@ export default function Component() {
   return (
     <div className={`min-h-screen ${themeStyles.background}`}>
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02]" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-0 left-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-48 sm:w-96 h-48 sm:h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
 
       <div className={`relative min-h-screen ${themeStyles.container}`}>
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center mb-12">
-            <h1 className={`text-5xl sm:text-6xl md:text-7xl font-bold mb-4
+        <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4
                            bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600
                            bg-clip-text text-transparent
                            animate-gradient-x`}>
               AI工具宇宙
             </h1>
-            <p className={`text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto
+            <p className={`text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4
                           bg-gradient-to-r from-blue-600 to-purple-600
                           bg-clip-text text-transparent`}>
               发现和探索最强大的AI工具
-              <br />
+              <br className="hidden sm:block" />
               塑造我们的未来
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto mb-12">
+          <div className="max-w-2xl mx-auto mb-8 sm:mb-12 px-4 sm:px-0">
             <div className={themeStyles.searchContainer}>
               <div className="relative">
                 <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500" />
@@ -181,20 +181,22 @@ export default function Component() {
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map(category => (
-              <Button
-                key={category}
-                variant="ghost"
-                className={`${themeStyles.categoryButton}
-                           ${selectedCategory === category ? themeStyles.categoryButtonActive : ''}`}
-                onClick={() => setSelectedCategory(category)}>
-                {category}
-              </Button>
-            ))}
+          <div className="mb-8 sm:mb-12 -mx-4 px-4 sm:px-0">
+            <div className="flex overflow-x-auto pb-2 sm:pb-0 sm:flex-wrap sm:justify-center gap-2 sm:gap-3 no-scrollbar">
+              {categories.map(category => (
+                <Button
+                  key={category}
+                  variant="ghost"
+                  className={`flex-none ${themeStyles.categoryButton}
+                             ${selectedCategory === category ? themeStyles.categoryButtonActive : ''}`}
+                  onClick={() => setSelectedCategory(category)}>
+                  {category}
+                </Button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredTools.map(tool => (
               <a
                 key={tool.id}
@@ -204,7 +206,7 @@ export default function Component() {
                 className={themeStyles.card}
               >
                 <div className="flex flex-col gap-2.5">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-start sm:items-center justify-between flex-wrap gap-2">
                     <h3 className={themeStyles.toolName}>
                       {tool.name}
                     </h3>
