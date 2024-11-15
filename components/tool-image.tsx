@@ -15,14 +15,7 @@ export function ToolImage({ src, alt, className }: ToolImageProps) {
   return (
     <div className={`relative ${className}`}>
       {error ? (
-        <Image
-          src="/placeholder.svg"
-          alt={alt}
-          width={48}
-          height={48}
-          className="object-contain"
-          priority
-        />
+        <Image src="{src}" alt={alt} width={48} height={48} className="object-contain" priority />
       ) : (
         <Image
           src={src}
