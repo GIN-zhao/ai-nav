@@ -14,15 +14,15 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AI Tools Universe",
-  description: "Discover and explore the most powerful AI tools that are shaping our future. A curated collection of AI tools for chat, code, art, writing, music and video.",
-  keywords: "AI tools, artificial intelligence, ChatGPT, Claude AI, Midjourney, GitHub Copilot, AI chat, AI code, AI art",
-  authors: [{ name: "AI Tools Universe" }],
+  title: "AI工具宇宙",
+  description: "发现和探索最强大的AI工具，精选聊天、代码、艺术、写作、音乐和视频等领域的AI工具集合。",
+  keywords: "AI工具, 人工智能, ChatGPT, Claude AI, Midjourney, GitHub Copilot, AI聊天, AI编程, AI艺术",
+  authors: [{ name: "AI工具宇宙" }],
   openGraph: {
-    title: "AI Tools Universe",
-    description: "Discover and explore the most powerful AI tools that are shaping our future",
+    title: "AI工具宇宙",
+    description: "发现和探索最强大的AI工具，塑造我们的未来",
     url: "https://ai-nav-nine.vercel.app/",
-    siteName: "AI Tools Universe",
+    siteName: "AI工具宇宙",
     images: [
       {
         url: "/og-image.png",
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
         height: 630,
       },
     ],
-    locale: "en_US",
+    locale: "zh_CN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Tools Universe",
-    description: "Discover and explore the most powerful AI tools that are shaping our future",
+    title: "AI工具宇宙",
+    description: "发现和探索最强大的AI工具，塑造我们的未来",
     images: ["/og-image.png"],
   },
 };

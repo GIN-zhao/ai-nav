@@ -7,180 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { ToolImage } from '@/components/tool-image';
-
-interface Tool {
-  id: string;
-  name: string;
-  icon: string;
-  category: string;
-  description: string;
-  url: string;
-}
-
-const tools: Tool[] = [
-  {
-    id: '1',
-    name: 'ChatGPT',
-    icon: '/logos/ChatGPT_logo.svg',
-    category: 'AI Chat',
-    description: "The world's most famous conversational assistant. Ask questions and get precise answers",
-    url: 'https://chat.openai.com'
-  },
-  {
-    id: '2',
-    name: 'Claude AI',
-    icon: '/logos/Claude_logo.ico',
-    category: 'AI Chat',
-    description: 'An AI assistant with growing capabilities and impressive performance',
-    url: 'https://claude.ai'
-  },
-  {
-    id: '3',
-    name: 'Gemini AI',
-    icon: '/logos/Gemini_logo.webp',
-    category: 'AI Chat',
-    description: 'A powerful AI chat assistant from Google that rivals ChatGPT in performance',
-    url: 'https://gemini.google.com'
-  },
-  {
-    id: '4',
-    name: 'Microsoft Copilot',
-    icon: '/logos/MicrosoftCopilot_logo.png',
-    category: 'AI Chat',
-    description: 'A versatile assistant to help you every day. Get customized solutions and useful information at any time',
-    url: 'https://copilot.microsoft.com'
-  },
-  {
-    id: '5',
-    name: 'Poe',
-    icon: '/logos/Poe_logo.png',
-    category: 'AI Chat',
-    description: 'An AI powered by Quora that can answer any question you have',
-    url: 'https://poe.com'
-  },
-  {
-    id: '6',
-    name: 'Midjourney',
-    icon: '/logos/Midjourney_logo.png',
-    category: 'AI Art',
-    description: 'The most powerful AI art generation tool',
-    url: 'https://www.midjourney.com'
-  },
-  {
-    id: '7',
-    name: 'Suno',
-    icon: '/logos/StableDiffusion_logo.png',
-    category: 'AI Music',
-    description: 'The most powerful AI music creation tool',
-    url: 'https://www.suno.ai'
-  },
-  {
-    id: '8',
-    name: 'Cursor',
-    icon: '/logos/cursor_logo.jpeg',
-    category: 'AI Code',
-    description: 'An AI-first code editor that helps you code 10x faster with AI built in at every layer',
-    url: 'https://cursor.sh'
-  },
-  {
-    id: '9',
-    name: 'GitHub Copilot',
-    icon: '/logos/copilot.png',
-    category: 'AI Code',
-    description: 'Your AI pair programmer that helps you write code faster and with less work',
-    url: 'https://github.com/features/copilot'
-  },
-  {
-    id: '10',
-    name: '通义千问',
-    icon: '/logos/tongyi_logo.svg',
-    category: 'AI Code',
-    description: '阿里云推出的AI编程助手，提供代码补全、代码生成、代码解释等功能',
-    url: 'https://tongyi.aliyun.com'
-  },
-  {
-    id: '11',
-    name: 'DeepSeek Coder',
-    icon: '/logos/deepseek_logo.jpeg',
-    category: 'AI Code',
-    description: 'A powerful AI code assistant that helps you write better code with deep understanding of your codebase',
-    url: 'https://www.deepseek.com'
-  },
-  {
-    id: '12',
-    name: 'Leonardo.ai',
-    icon: '/logos/leonardo_logo.png',
-    category: 'AI Art',
-    description: 'AI-powered creative studio for generating and editing professional quality images',
-    url: 'https://leonardo.ai'
-  },
-  {
-    id: '13',
-    name: 'Jasper',
-    icon: '/logos/jasper_logo.png',
-    category: 'AI Writing',
-    description: 'AI writing assistant that helps create original content for blogs, social media, and marketing',
-    url: 'https://www.jasper.ai'
-  },
-  {
-    id: '14',
-    name: 'Copy.ai',
-    icon: '/logos/copyai_logo.png',
-    category: 'AI Writing',
-    description: 'AI-powered copywriting tool that generates high-converting marketing copy',
-    url: 'https://www.copy.ai'
-  },
-  {
-    id: '15',
-    name: 'Grammarly',
-    icon: '/logos/grammarly_logo.ico',
-    category: 'AI Writing',
-    description: 'AI writing assistant that helps improve grammar, clarity, and writing style',
-    url: 'https://www.grammarly.com'
-  },
-  {
-    id: '16',
-    name: 'Runway',
-    icon: '/logos/runway_logo.png',
-    category: 'AI Video',
-    description: 'AI-powered creative suite for editing and generating videos',
-    url: 'https://runway.ml'
-  },
-  {
-    id: '17',
-    name: 'Synthesia',
-    icon: '/logos/synthesia_logo.png',
-    category: 'AI Video',
-    description: 'AI video generation platform that turns text into professional-looking videos',
-    url: 'https://www.synthesia.io'
-  },
-  {
-    id: '18',
-    name: 'Amazon CodeWhisperer',
-    icon: '/logos/codewhisperer_logo.ico',
-    category: 'AI Code',
-    description: 'AI coding companion that provides code suggestions based on comments and existing code',
-    url: 'https://aws.amazon.com/codewhisperer'
-  },
-  {
-    id: '19',
-    name: 'Tabnine',
-    icon: '/logos/tabnine_logo.ico',
-    category: 'AI Code',
-    description: 'AI code completion tool that helps developers write code faster and with fewer errors',
-    url: 'https://www.tabnine.com'
-  },
-  {
-    id: '20',
-    name: 'Replit',
-    icon: '/logos/replit_logo.png',
-    category: 'AI Code',
-    description: 'Browser-based IDE with AI pair programming features to help you code better',
-    url: 'https://replit.com'
-  }
-];
-
-const categories = ['All', 'AI Chat', 'AI Code', 'AI Art', 'AI Writing', 'AI Music', 'AI Video'];
+import { Tool, tools, categories } from '@/config/tools';
 
 export default function Component() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -331,12 +158,12 @@ export default function Component() {
           <div className="text-center mb-12 sm:mb-20 space-y-3 sm:space-y-5">
             <h1 className={`text-4xl sm:text-5xl md:text-7xl font-bold ${themeStyles.title}
                            leading-tight`}>
-              AI Tools Universe
+              AI工具宇宙
             </h1>
             <p className={`text-lg sm:text-xl max-w-2xl mx-auto px-4 ${themeStyles.subtitle}`}>
-              Discover and explore the most powerful AI tools
+              发现和探索最强大的AI工具
               <br className="hidden sm:block" />
-              that are shaping our future
+              塑造我们的未来
             </p>
           </div>
 
@@ -347,7 +174,7 @@ export default function Component() {
                   <Search className={themeStyles.searchIcon} />
                 </div>
                 <Input
-                  placeholder="Search by name, description or category..."
+                  placeholder="搜索工具名称、描述或分类..."
                   className={`w-full h-12 sm:h-14 pl-14 pr-6 rounded-2xl text-base sm:text-lg
                              ${themeStyles.searchBg}
                              ${themeStyles.searchText}
